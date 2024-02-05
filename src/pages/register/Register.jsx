@@ -1,12 +1,13 @@
-import axios from "axios";
-import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./register.css";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import "./login.css";
+import axios from "axios";
 
-const Login = () => {
+const Register = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
+    email: undefined,
     password: undefined,
   });
 
@@ -15,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    console.log(credentials);
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
@@ -22,40 +24,16 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post(
+        "http://localhost:8800/api/auth/register",
+        credentials
+      );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
-
-  /* return (
-    <div className="login">
-      <div className="lContainer">
-        <input
-          type="text"
-          placeholder="username"
-          id="username"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-       
-      </div>
-    </div>
-    
-  );*/
-
   return (
     <div className="d-lg-flex half">
       <div className="bg order-1 order-md-2"></div>
@@ -82,6 +60,17 @@ const Login = () => {
                   />
                 </div>
 
+                <div className="form-group first">
+                  <label htmlFor="username">Email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="your-email@gmail.com"
+                    id="email"
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div className="form-group last mb-3">
                   <label htmlFor="password">Password</label>
                   <input
@@ -94,13 +83,12 @@ const Login = () => {
                 </div>
 
                 <input
-                  type="button"
-                  value="Log In"
+                  type="submit"
                   disabled={loading}
                   onClick={handleClick}
+                  value="Log In"
                   className="btn btn-block btn-login"
                 />
-                {error && <span>{error.message}</span>}
               </form>
             </div>
           </div>
@@ -110,4 +98,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
