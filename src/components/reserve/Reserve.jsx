@@ -58,6 +58,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           const res = axios.put(`/rooms/availability/${roomId}`, {
             dates: alldates,
           });
+          
           return res.data;
         })
       );
@@ -66,30 +67,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     } catch (err) {}
   };
   return (
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div className="reserve">
-
-
-
-
-
-
-      
       <div className="rContainer">
         <FontAwesomeIcon
           icon={faCircleXmark}

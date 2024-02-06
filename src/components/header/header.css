@@ -52,6 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #ffffff;
 	margin-bottom: 16px;
 }
+
 .hero-text p {
 	font-size: 18px;
 	color: #ffffff;
@@ -123,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	float: none;
 }
+
 .booking-form form .select-option .nice-select:after {
 	border-bottom: 2px solid #69c86e;
 	border-right: 2px solid #147b33;
