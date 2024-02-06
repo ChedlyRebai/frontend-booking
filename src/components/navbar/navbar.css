@@ -24,11 +24,19 @@
   margin-right: 10px; /* Add spacing between buttons */
   background-color: #2ecc71; /* Set button background color */
   color: #fff; /* Set button text color */
-  border: none;
   padding: 8px 16px;
   cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 1px solid #dfa974;
+  border-radius: 2px;
+  color: #dfa974;
+  font-weight: 500;
+  background: transparent;
+  height: 46px;
 }
 
 .navButton:hover {
-  background-color: #27ae60; /* Change button background color on hover */
+  background-color: #dfa974;
+  color: white; /* Change button background color on hover */
 }
