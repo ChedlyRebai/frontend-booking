@@ -50,12 +50,12 @@ const Navbar = () => {
             user.username
           ) : (
             <div>
-              <button className="navButton">
-                <Link to={"register"} /> Register
-              </button>
-              <button className="navButton">
-                <Link to={"login"} /> Login
-              </button>
+              <Link to={"register"}>
+                <button className="navButton">Register</button>
+              </Link>
+              <Link to={"login"}>
+                <button className="navButton">Login</button>
+              </Link>
             </div>
           )}{" "}
         </form>

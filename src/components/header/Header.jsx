@@ -88,7 +88,7 @@ const Header = ({ type }) => {
                 <div className="check-date">
                   <label htmlFor="date-in">Check In:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="date-input"
                     id="date-in"
                     onChange={(e) =>
@@ -102,7 +102,7 @@ const Header = ({ type }) => {
                 <div className="check-date">
                   <label htmlFor="date-out">Check Out:</label>
                   <input
-                    type="text"
+                    type="date"
                     className="date-input"
                     id="date-out"
                     onChange={(e) =>

@@ -3,10 +3,8 @@ import "./searchItem.css";
 
 const SearchItem = ({ item }) => {
   return (
-    <div >
-
-
-{/* <div class="breadcrumb-section">
+    <div>
+      {/* <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -22,81 +20,49 @@ const SearchItem = ({ item }) => {
         </div>
     </div> */}
 
-
-
-     
-    <section className="rooms-section spad">
+      <section className="rooms-section spad">
         <div className="container">
-            <div className="row">
-                <div className="col-lg-4 col-md-6">
-                    <div className="room-item">
-                        <img src={item.photos[0]} alt=""></img>
-                        <div className="ri-text">
-                            <h4>{item.name}</h4>
-                            <h3>{item.cheapestPrice}DNT<span>/Pernight</span></h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className="r-o">Distance:</td>
-                                        <td>{item.distance}m from center</td>
-                                    </tr>
-                                    <br></br>
-                                    <tr>
-                                        <td className="r-o">Adresse:</td>
-                                        <td>{item.address}</td>
-                                    </tr>
-                                    <br></br>
-                                    <tr>
-                                        <td className="r-o">city:</td>
-                                        <td>{item.city}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <Link to={`/hotels/${item._id}`}>
-                            <a  class="primary-btn">More Details</a>
-                            </Link>
-                        </div>
-                    </div>
+          <div className="row">
+            <div className="col-lg-4 col-md-6">
+              <div className="room-item">
+                <img src={item.photos[0]} alt=""></img>
+                <div className="ri-text">
+                  <h4>{item.name}</h4>
+                  <h3>
+                    {item.cheapestPrice}DNT<span>/Pernight</span>
+                  </h3>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="r-o">Distance:</td>
+                        <td>{item.distance}m from center</td>
+                      </tr>
+                      <br></br>
+                      <tr>
+                        <td className="r-o">Adresse:</td>
+                        <td>{item.address}</td>
+                      </tr>
+                      <br></br>
+                      <tr>
+                        <td className="r-o">city:</td>
+                        <td>{item.city}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <Link to={`/hotels/${item._id}`}>
+                    <a class="primary-btn">More Details</a>
+                  </Link>
                 </div>
-             
-          
-
-
-                
-
-
-
-                
-              
-             
-              
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-   
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      
+      </section>
     </div>
   );
 };
 
 export default SearchItem;
-
-
-
-
 
 /**************
  * 

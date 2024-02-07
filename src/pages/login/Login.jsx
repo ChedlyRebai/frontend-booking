@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -24,37 +25,13 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      toast.success("Login success");
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      toast.error(error.message);
     }
   };
-
-  /* return (
-    <div className="login">
-      <div className="lContainer">
-        <input
-          type="text"
-          placeholder="username"
-          id="username"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-       
-      </div>
-    </div>
-    
-  );*/
 
   return (
     <div className="d-lg-flex half">
@@ -100,7 +77,6 @@ const Login = () => {
                   onClick={handleClick}
                   className="btn btn-block btn-login"
                 />
-                {error && <span>{error.message}</span>}
               </form>
             </div>
           </div>
