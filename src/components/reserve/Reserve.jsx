@@ -7,12 +7,13 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
-
+  const { user } = useContext(AuthContext);
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -50,18 +51,24 @@ const Reserve = ({ setOpen, hotelId }) => {
   };
 
   const navigate = useNavigate();
+  const userId = localStorage.getItem("user") || {};
 
   const handleClick = async () => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
-          
+          const res = axios
+            .put(`http://localhost:3000/rooms/availability/${roomId}`, {
+              userId: user._id,
+              checkInDate: alldates[0],
+              checkOutDate: alldates[1],
+              dates: alldates,
+            })
+            .then((data) => console.log(data));
           return res.data;
         })
       );
+
       setOpen(false);
       navigate("/");
     } catch (err) {}

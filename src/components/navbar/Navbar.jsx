@@ -8,9 +8,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo01"
@@ -18,32 +18,32 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <Link to="/" style={{ color: "black", textDecoration: "none" }}>
             <span className="logo">lamabooking</span>
           </Link>{" "}
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
+          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item active">
+              <a className="nav-link" href="#">
+                Home <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Link
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">
                 Disabled
               </a>
             </li>
           </ul>
         </div>
         <form
-          class="form-inline my-2 my-lg-0"
+          className="form-inline my-2 my-lg-0"
           style={{ color: "black", textDecoration: "none" }}
         >
           {user ? (
@@ -60,9 +60,9 @@ const Navbar = () => {
           )}{" "}
         </form>
       </nav>
-      {/* <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      {/* <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
 
-<img src="https://lp-cms-production.imgix.net/2019-06/c32f29efd9f1e16d0732dc4ce06918fd-sidi-bou-said.jpg?auto=format&w=1920&h=640&fit=crop&crop=faces,edges&q=75" class="img-fluid" alt="Responsive image"></img>
+<img src="https://lp-cms-production.imgix.net/2019-06/c32f29efd9f1e16d0732dc4ce06918fd-sidi-bou-said.jpg?auto=format&w=1920&h=640&fit=crop&crop=faces,edges&q=75" className="img-fluid" alt="Responsive image"></img>
 </div>
  */}{" "}
       {/* <div className="navContainer">

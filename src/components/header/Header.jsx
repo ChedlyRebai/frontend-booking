@@ -111,12 +111,13 @@ const Header = ({ type }) => {
                       ])
                     }
                   />
+
                   <i className="icon_calendar"></i>
                 </div>
                 <div className="select-option">
                   <label htmlFor="guest">Guests:</label>
                   <input
-                    type="text"
+                    type="number"
                     id="guest"
                     placeholder="Number of Adults"
                     onChange={(e) =>

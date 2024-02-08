@@ -18,7 +18,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
-
+import * as Dialog from "@radix-ui/react-dialog";
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -34,12 +34,23 @@ const Hotel = () => {
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
+    date1 = new Date(date1);
+    date2 = new Date(date2);
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  let days;
+  const endDate = dates?.[0]?.endDate;
+  const startDate = dates?.[0]?.startDate;
+
+  if (endDate && startDate) {
+    days = dayDifference(endDate, startDate);
+    // rest of your code
+  } else {
+    // handle the case when endDate or startDate is undefined
+  }
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -65,50 +76,39 @@ const Hotel = () => {
       navigate("/login");
     }
   };
+
+  console.log(`{days} * {data.cheapestPrice} * {options.room} `);
+  console.log(`${days} * ${data.cheapestPrice} * ${options.room} `);
   return (
     <div>
-
-
-
-
-
-
-
-
-
-
-
       <Navbar />
-      <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h2>Our Rooms</h2>
-                        <div class="bt-option">
-                            <a href="./home.html">Home</a>
-                            <span>Rooms</span>
-                        </div>
-                    </div>
+      <div className="breadcrumb-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="breadcrumb-text">
+                <h2>Our Rooms</h2>
+                <div className="bt-option">
+                  <a href="./home.html">Home</a>
+                  <span>Rooms</span>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
-                <span>
-                
-                </span>
-                <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
-                  nights)
-                </h2>
-                <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="hotelDetailsPrice">
+        <h1>Perfect for a {days}-night stay!</h1>
+        <span></span>
+        <h2>
+          <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+        </h2>
+
+        <button onClick={handleClick}>Reserve or Book Now!</button>
+      </div>
       {loading ? (
         "loading"
       ) : (
-        
         <div className="hotelContainer">
           {open && (
             <div className="slider">
@@ -134,38 +134,35 @@ const Hotel = () => {
                 className="arrow"
                 onClick={() => handleMove("r")}
               />
-              
             </div>
-            
           )}
-              
 
-
-          
           <div className="hotelWrapper">
-            <h2 >{data.name}</h2>
+            <h2>{data.name}</h2>
 
             <div className="hotelAddress">
-        <FontAwesomeIcon icon={faLocationDot} />
-        <span>
-          <h5>{data.address}</h5>
-        </span>
-      </div>
-      
-      <div>
-        <span className="hotelDistance">
-          <FontAwesomeIcon icon={faLocationDot} /> {/* Change this icon as needed */}
-          <h5>Excellent location – {data.distance}m from center</h5>
-        </span>
-      </div>
+              <FontAwesomeIcon icon={faLocationDot} />
+              <span>
+                <h5>{data.address}</h5>
+              </span>
+            </div>
 
-      <span className="hotelPriceHighlight">
-        {/* Change this icon as needed */}
-        <h4>
-        <b>$ </b>Book a stay over <b>{data.cheapestPrice}DNT</b> at this property
-        </h4>
-      </span>
-            
+            <div>
+              <span className="hotelDistance">
+                <FontAwesomeIcon icon={faLocationDot} />{" "}
+                {/* Change this icon as needed */}
+                <h5>Excellent location – {data.distance}m from center</h5>
+              </span>
+            </div>
+
+            <span className="hotelPriceHighlight">
+              {/* Change this icon as needed */}
+              <h4>
+                <b>$ </b>Book a stay over <b>{data.cheapestPrice}DNT</b> at this
+                property
+              </h4>
+            </span>
+
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
                 <div className="hotelImgWrapper" key={i}>
@@ -186,13 +183,11 @@ const Hotel = () => {
             </div>
           </div>
           <div></div>
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          
-</ul>
-          <Footer  />
+          <ul className="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+          <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
