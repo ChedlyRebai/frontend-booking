@@ -8,20 +8,34 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
-  const { dates } = useContext(SearchContext);
+  const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
+  let daysDifference = 0;
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
+    console.log(startDate);
+    console.log(endDate);
+
+    const date1 = new Date(startDate);
+    const date2 = new Date(endDate);
+
+    // Calculate the difference in milliseconds
+    const timeDifference = date2 - date1;
+
+    // Convert milliseconds to days
+    daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+
     const end = new Date(endDate);
-
     const date = new Date(start.getTime());
-
     const dates = [];
 
+    console.log(end);
+    console.log(date);
     while (date <= end) {
       dates.push(new Date(date).getTime());
       date.setDate(date.getDate() + 1);
@@ -62,13 +76,18 @@ const Reserve = ({ setOpen, hotelId }) => {
               userId: user._id,
               checkInDate: alldates[0],
               checkOutDate: alldates[1],
-              dates: alldates,
+              peopleNumber: options.adult,
+              dates: alldates.length,
+              daysDifference: daysDifference,
             })
-            .then((data) => console.log(data));
+            .then((data) => {
+              toast.success("reservation completed");
+              console.log(data);
+            })
+            .catch(() => toast.error("reservation "));
           return res.data;
         })
       );
-
       setOpen(false);
       navigate("/");
     } catch (err) {}
@@ -92,6 +111,7 @@ const Reserve = ({ setOpen, hotelId }) => {
               </div>
               <div className="rPrice">{item.price}</div>
             </div>
+
             <div className="rSelectRooms">
               {item.roomNumbers.map((roomNumber) => (
                 <div className="room">
