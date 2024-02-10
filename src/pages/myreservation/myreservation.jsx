@@ -8,7 +8,6 @@ import { AuthContext } from "../../context/AuthContext";
 const Myreservation = () => {
   const [myReservation, setMyReservation] = useState([]);
   const { user } = useContext(AuthContext);
-
   useEffect(() => {
     const fetchReservations = async () => {
       console.log(user._id);
