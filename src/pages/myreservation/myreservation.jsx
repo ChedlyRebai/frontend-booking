@@ -29,7 +29,6 @@ const Myreservation = () => {
       <Navbar />
       <div className="container mt-4 mb-5">
         <h1>My Reservation</h1>
-
         {myReservation.map((item, index) => (
           <ReservationItem key={index} item={item} />
         ))}
