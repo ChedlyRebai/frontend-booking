@@ -15,7 +15,6 @@ const Myreservation = () => {
         const response = await axios.get(
           `http://localhost:8800/api/reservation/getreservationId/${user._id}`
         );
-
         console.log(response.data);
         setMyReservation(response.data); // assuming the data is the reservation
       } catch (error) {
