@@ -79,6 +79,7 @@ const Reserve = ({ setOpen, hotelId }) => {
               peopleNumber: options.adult,
               dates: alldates.length,
               daysDifference: daysDifference,
+              hotelId: hotelId,
             })
             .then((data) => {
               toast.success("reservation completed");

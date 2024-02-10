@@ -1,34 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./myreservation.css";
 import { Link } from "react-router-dom";
-const ReservationItem = () => {
+import axios from "axios";
+
+const ReservationItem = ({ item }) => {
   return (
     <div className="searchItem">
-      <img src="" alt="" className="siImg" />
+      <img
+        src={`${item.hotel.photos && item.hotel.photos[0]}`}
+        alt={`${item.hotel.name}`}
+        className="siImg"
+      />
       <div className="siDesc">
-        <h1 className="siTitle">chedlt</h1>
-        <span className="siDistance">m from center</span>
-        <span className="siTaxiOp">Free airport taxi</span>
-        <span className="siSubtitle">
-          Studio Apartment with Air conditioning
-        </span>
-        <span className="siFeatures">desccc</span>
-        <span className="siCancelOp">Free cancellation </span>
+        <h1 className="siTitle">{item.hotel.name}</h1>
+        <span className="siDistance">{item.hotel.desc}</span>
+
+        {/* <span className="siTaxiOp">Free airport taxi</span>*/}
+        <span className="siSubtitle">{item.room.title}</span>
+        <span className="siFeatures">Max people:{item.room.maxPeople}</span>
+        <span className="siCancelOp"> </span>
         <span className="siCancelOpSubtitle">
-          You can cancel later, so lock in this great price today!
+          Reserved in {new Date(item.reservation.createdAt).toLocaleString()}
+          <br />
+          {item.hotel.city}
+          {item.hotel.address}
         </span>
       </div>
       <div className="siDetails">
         <div className="siRating">
-          <span>Excellent</span>
-          <button>ccccccc</button>
+          <div></div>
+          <span>{item.hotel.type}</span>
         </div>
 
         <div className="siDetailTexts">
-          <span className="siPrice">$cccccc</span>
+          <span className="siPrice">${item.reservation.totalPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`/hotels/cc`}>
-            <button className="siCheckButton">See availability</button>
+          <Link to={`/hotels/${item.hotel._id}`}>
+            <button className="siCheckButton">Hotel</button>
           </Link>
         </div>
       </div>
