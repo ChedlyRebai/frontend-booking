@@ -24,7 +24,6 @@ const Myreservation = () => {
     };
     fetchReservations();
   }, [user._id]);
-
   return (
     <div>
       <Navbar />
