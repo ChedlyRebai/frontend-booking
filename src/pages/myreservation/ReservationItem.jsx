@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./myreservation.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import "./myreservation.css";
 
 const ReservationItem = ({ item }) => {
   return (
@@ -17,10 +16,20 @@ const ReservationItem = ({ item }) => {
 
         {/* <span className="siTaxiOp">Free airport taxi</span>*/}
         <span className="siSubtitle">{item.room.title}</span>
-        <span className="siFeatures">Max people:{item.room.maxPeople}</span>
+        <span className="siFeatures">
+          From {new Date(item.reservation.checkInDate).toLocaleDateString()} To{" "}
+          {new Date(item.reservation.checkOutDate).toLocaleDateString()}{" "}
+        </span>
         <span className="siCancelOp"> </span>
         <span className="siCancelOpSubtitle">
-          Reserved in {new Date(item.reservation.createdAt).toLocaleString()}
+          Reserved in {new Date(item.reservation.createdAt).toLocaleDateString()}
+          {item.user && (
+            <>
+              <span > by {item.user.username} {' '}</span>
+              <br />
+              <span>email: {item.user.email}</span>
+            </>
+          )}
           <br />
           {item.hotel.city}
           {item.hotel.address}
@@ -31,7 +40,6 @@ const ReservationItem = ({ item }) => {
           <div></div>
           <span>{item.hotel.type}</span>
         </div>
-
         <div className="siDetailTexts">
           <span className="siPrice">${item.reservation.totalPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>

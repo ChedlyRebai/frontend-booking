@@ -1,24 +1,19 @@
-import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
   faCircleXmark,
-  faDollarSign,
-  faLocationDot,
-  faMoneyBillAlt,
+  faLocationDot
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SearchContext } from "../../context/SearchContext";
-import { AuthContext } from "../../context/AuthContext";
+import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
 import Reserve from "../../components/reserve/Reserve";
-import * as Dialog from "@radix-ui/react-dialog";
+import { AuthContext } from "../../context/AuthContext";
+import { SearchContext } from "../../context/SearchContext";
+import useFetch from "../../hooks/useFetch";
+import "./hotel.css";
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];

@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllReservation from "./pages/allReservation/AllReservation";
 import Home from "./pages/home/Home";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
 import Myreservation from "./pages/myreservation/myreservation";
+import Register from "./pages/register/Register";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/myreservation" element={<Myreservation />} />
+        <Route path="/allreservation" element={<AllReservation />} />
       </Routes>
     </BrowserRouter>
   );

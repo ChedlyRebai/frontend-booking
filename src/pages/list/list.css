@@ -97,5 +97,10 @@ button:hover {
 }
 
 .listResult {
+  text-align: center;
+  justify-content: center;
   flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+
 }

@@ -1,12 +1,9 @@
-import "./list.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { format } from "date-fns";
-import { DateRange } from "react-date-range";
+import { useLocation } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import "./list.css";
 
 const List = () => {
   const location = useLocation();
@@ -90,7 +87,7 @@ const List = () => {
            
         
       
-      <div className="listResult">
+      <div className="listResult mt-4">
             {loading ? (
               "loading"
             ) : (

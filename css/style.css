@@ -1184,6 +1184,7 @@ ol {
   padding-bottom: 80px;
 }
 .room-item {
+  height: 200px;
   margin-bottom: 30px;
 }
 .room-item img {

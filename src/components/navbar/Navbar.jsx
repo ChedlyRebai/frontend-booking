@@ -1,14 +1,14 @@
-import "./navbar.css";
-import { Link, Navigate } from "react-router-dom";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import "./navbar.css";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="container navbar navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"
           type="button"
@@ -27,23 +27,24 @@ const Navbar = () => {
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
               <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
+                Home <span className="sr-only"></span>
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
+            <li className="nav-item active">
+              <Link className="nav-link" to={'/myreservation'} >
+                My Reservation <span className="sr-only"></span>
+              </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">
-                Disabled
-              </a>
+
+            <li className="nav-item active">
+              <Link className="nav-link" to={'/allreservation'} >
+                All Reservation <span className="sr-only"></span>
+              </Link>
             </li>
           </ul>
         </div>
         <form
-          className="form-inline my-2 my-lg-0"
+          className="form-inline my-2 my-lg-0 ml-3"
           style={{ color: "black", textDecoration: "none" }}
         >
           {user ? (

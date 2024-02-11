@@ -23,7 +23,7 @@ const SearchItem = ({ item }) => {
       <section className="rooms-section spad">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6">
+            <div className="item">
               <div className="room-item">
                 <img src={item.photos[0]} alt=""></img>
                 <div className="ri-text">
