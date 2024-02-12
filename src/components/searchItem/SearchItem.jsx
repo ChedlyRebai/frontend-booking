@@ -4,13 +4,13 @@ import "./searchItem.css";
 const SearchItem = ({ item }) => {
   return (
     <div>
-      {/* <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
+      {/* <div className="breadcrumb-section">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-12">
+                    <div className="breadcrumb-text">
                         <h2>Our Rooms</h2>
-                        <div class="bt-option">
+                        <div className="bt-option">
                             <a href="./home.html">Home</a>
                             <span>Rooms</span>
                         </div>
@@ -23,7 +23,7 @@ const SearchItem = ({ item }) => {
       <section className="rooms-section spad">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6">
+            <div className="item">
               <div className="room-item">
                 <img src={item.photos[0]} alt=""></img>
                 <div className="ri-text">
@@ -50,7 +50,7 @@ const SearchItem = ({ item }) => {
                     </tbody>
                   </table>
                   <Link to={`/hotels/${item._id}`}>
-                    <a class="primary-btn">More Details</a>
+                    <a className="primary-btn">More Details</a>
                   </Link>
                 </div>
               </div>

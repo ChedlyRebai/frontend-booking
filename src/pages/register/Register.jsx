@@ -3,6 +3,7 @@ import "./register.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -28,10 +29,12 @@ const Register = () => {
         "http://localhost:8800/api/auth/register",
         credentials
       );
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      dispatch({ type: "Register_SUCCESS", payload: res.data.details });
       navigate("/");
+      toast.success(`Welcome ${credentials.username}`);
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "register_FAILURE", payload: err.response.data });
+      toast.error(error.message);
     }
   };
   return (

@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { AuthContextProvider } from "./context/AuthContext";
 import { SearchContextProvider } from "./context/SearchContext";
-import {bootstrap}from'bootstrap/dist/css/bootstrap.min.css';
+import { bootstrap } from "bootstrap/dist/css/bootstrap.min.css";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,6 +12,7 @@ root.render(
     <AuthContextProvider>
       <SearchContextProvider>
         <App />
+        <Toaster />
       </SearchContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
