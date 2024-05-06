@@ -21,6 +21,7 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
@@ -52,7 +53,7 @@ const Login = () => {
               </p>
               <form action="#" method="post">
                 <div className="form-group first">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Email</label>
                   <input
                     type="text"
                     className="form-control"

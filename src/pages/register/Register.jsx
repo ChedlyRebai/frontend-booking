@@ -24,6 +24,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
+    console.log(credentials);
     try {
       const res = await axios.post(
         "http://localhost:8800/api/auth/register",
